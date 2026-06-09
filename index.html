@@ -870,7 +870,7 @@
         <fieldset>
           <legend>Upload Photos</legend>
           <div class="upload-area" id="uploadArea">
-            <input type="file" name="photos" accept="image/*" multiple id="photoInput" aria-label="Upload up to 5 photos" />
+            <input type="file" name="photos" accept="image/*" multiple id="photoInput" required aria-label="Upload up to 5 photos" />
             <span class="upload-icon">📷</span>
             <p><strong>Tap to upload photos</strong><br>Up to 5 photos · JPG, PNG, HEIC</p>
           </div>
@@ -1093,25 +1093,7 @@
         }
       });
     });
-
-    // Form submission (Formspree AJAX)
-    const form = document.getElementById('quoteForm');
-    const successMsg = document.getElementById('successMsg');
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      submitBtn.textContent = 'Sending…';
-      submitBtn.disabled = true;
-
-      try {
-        const data = new FormData(form);
-        const res = await fetch(form.action, {
-          method: 'POST',
-          body: data,
-          headers: { 'Accept': 'application/json' }
-        });
-
-        if (res.ok) {
+if (res.ok) {
           form.style.display = 'none';
           successMsg.style.display = 'block';
           window.scrollTo({ top: document.getElementById('quote').offsetTop - 80, behavior: 'smooth' });
